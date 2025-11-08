@@ -2,7 +2,7 @@
 <hr>
 <img 
     width=1000 
-    style="image-rendering: pixelated; display: block; margin: auto" 
+    style="image-rendering: pixelated; image-rendering: crisp-edges; display: block; margin: auto" 
     src="src/game/resources/sprites/banner.png"
     alt = "Game Banner"
 >
