@@ -29,7 +29,7 @@ public class Main extends Application {
     );
 
     public static final Image bannerImage = new Image(
-            Objects.requireNonNull(Main.class.getResourceAsStream("resources/sprites/banner2.png"))
+            Objects.requireNonNull(Main.class.getResourceAsStream("resources/sprites/banner.png"))
     );
 
     @Override

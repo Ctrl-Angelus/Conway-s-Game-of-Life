@@ -16,7 +16,7 @@
 }
 .vbox {
     -fx-background-color: #126669;
-    -fx-padding: 50 20 00 00;
+    -fx-padding: 100 20 00 00;
 }
 .gameScene-pane {
     -fx-background-color: #23bfc4;
