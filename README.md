@@ -1,11 +1,13 @@
 
 <hr>
-<img 
+<div align="center">
+    <img 
     width=855 
-    style="image-rendering: pixelated; image-rendering: crisp-edges; display: block; margin: auto" 
+    style="image-rendering: pixelated; image-rendering: crisp-edges;" 
     src="src/game/resources/sprites/banner.png"
     alt = "Game Banner"
->
+    >
+</div>
 <hr>
 
 
@@ -39,26 +41,24 @@ it to move around the grid indefinitely, until it encounters another group of ce
 or the simulation border, where some of them will become still lives or oscillatory lives.
 
 <hr>
-<div style="display: flex;
-  justify-content: center;
-  align-items: center;">
+<div align="center">
     <img
         width=240
         style="image-rendering: pixelated; image-rendering: crisp-edges; margin: 20px"
         src="src/game/resources/sprites/patterns/pattern-still.png"
-        alt = "Game Banner"
+        alt = "Still life"
     >
     <img
         width=280
         style="image-rendering: pixelated; image-rendering: crisp-edges; margin: 20px"
         src="src/game/resources/sprites/patterns/pattern-oscillators.png"
-        alt = "Game Banner"
+        alt = "Oscillator life"
     >
     <img
         width=280
         style="image-rendering: pixelated; image-rendering: crisp-edges; margin: 20px"
         src="src/game/resources/sprites/patterns/pattern-spaceships.png"
-        alt = "Game Banner"
+        alt = "SpaceShips"
     >
 </div>
 <hr>
