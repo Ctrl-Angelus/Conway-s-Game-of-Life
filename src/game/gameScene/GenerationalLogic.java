@@ -6,11 +6,7 @@ import javafx.scene.text.Text;
 
 import java.util.Random;
 
-import static game.gameScene.Constants.SIZE;
-import static game.gameScene.Constants.cellMatrix;
-import static game.gameScene.Constants.copyMatrix;
-import static game.gameScene.Constants.cellSize;
-import static game.gameScene.Constants.realWidth;
+import static game.utils.AppParameters.*;
 
 public class GenerationalLogic extends GameScene{
     public static void drawFirstGenerationCells(GraphicsContext gc){

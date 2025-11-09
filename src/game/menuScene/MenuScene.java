@@ -11,8 +11,8 @@ import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-import static game.Main.*;
-import static game.gameScene.Constants.realWidth;
+import static game.utils.AppParameters.realWidth;
+import static game.utils.Assets.*;
 
 public class MenuScene {
     public Scene getMenuScene(Stage stage){

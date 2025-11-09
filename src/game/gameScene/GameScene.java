@@ -10,12 +10,11 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-import static game.gameScene.Constants.*;
-import static game.gameScene.Constants.NANOSECONDS;
-import static game.gameScene.Constants.gameLoopActive;
-import static game.gameScene.GenerationalLogic.drawFirstGenerationCells;
-import static game.gameScene.GenerationalLogic.update;
-import static game.Main.customFont;
+import static game.utils.AppParameters.*;
+import static game.utils.ColorPalette.*;
+import static game.gameScene.GenerationalLogic.*;
+
+import static game.utils.Assets.customFont;
 
 public class GameScene {
 
