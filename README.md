@@ -43,7 +43,7 @@ number of alive neighbors and the current state of the cell:
 --module-path "$JAVAFX_HOME$\lib" --add-modules javafx.controls,javafx.fxml --enable-native-access=javafx.graphics
 ```
 
-**\$JAVAFX_HOME$:** Environment variable that contains the path to the javafx home directory. 
+`$JAVAFX_HOME$`: Environment variable that contains the path to the javafx home directory. 
 It has to be added to the IDE environment variables.
 
 ``` java
