@@ -22,7 +22,7 @@ public class MenuScene {
 
         gc.drawImage(bannerImage, 10, 15, realWidth, 270);
 
-        Button playButton = new Button("Iniciar");
+        Button playButton = new Button("Start");
         playButton.setFont(customFont);
         playButton.getStyleClass().add("btn");
 

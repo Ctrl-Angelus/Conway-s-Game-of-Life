@@ -20,9 +20,14 @@ public class GenerationalLogic extends GameScene{
 
             for (int j = 0; j < SIZE; j++) {
                 int randomValue = random.nextInt(0, 2); // Valor de vida aleatorio
-                boolean lifeState = (randomValue != 0); // 0 -> Falso, 1 -> Verdadero
+                boolean randomLifeState = (randomValue != 0); // 0 -> Falso, 1 -> Verdadero
 
-                Cell cell = new Cell(i, j, coordinateX, coordinateY, lifeState, cellSize);
+                Cell cell = new Cell(
+                        i, j,
+                        coordinateX, coordinateY,
+                        (!checkForBorders(i, j) && randomLifeState), // Evalúa si la célula esta en un borde o no, para colocar el life state
+                        cellSize);
+
                 cell.draw(gc); // Usa el Graphic context y la información de la célula para dibujarla
                 cellMatrix[i][j] = cell; // Añade la célula a la matriz de 2 dimensiones
 
@@ -30,6 +35,11 @@ public class GenerationalLogic extends GameScene{
             }
             coordinateY += cellSize;
         }
+    }
+
+    private static boolean checkForBorders(int i, int j){
+        // Verifica si la célula está en un lateral de la matriz
+        return (i == 0 || i == SIZE-1) || (j == 0 || j == SIZE-1);
     }
 
     public static void update(GraphicsContext gc, Text generationCounter){
@@ -76,12 +86,10 @@ public class GenerationalLogic extends GameScene{
     }
 
     private static int checkNeighbors(int i, int j){
-        // Verifica si la célula está en un lateral de la matriz
-        boolean sideCases = (i == 0 || i == SIZE-1) || (j == 0 || j == SIZE-1);
 
         int neighbors = 0; // Valor por defecto
 
-        if(sideCases){ return 0; } // Las células del borde exterior permanecerán muertas
+        if(checkForBorders(i, j)){ return 0; } // Las células del borde exterior permanecerán muertas
 
         int left = i-1;
         int up = j-1;
