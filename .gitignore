@@ -29,4 +29,4 @@ bin/
 .DS_Store
 
 ### Project's saved positions ###
-.dat
+*.dat
