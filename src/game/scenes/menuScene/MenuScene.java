@@ -106,7 +106,7 @@ public class MenuScene {
 
         loadButton.setOnAction(_ -> {
             try {
-                var Matrix = SaveManager.loadMatrix("save.dat");
+                var Matrix = SaveManager.loadMatrix(stage);
 
                 int size;
                 String message;

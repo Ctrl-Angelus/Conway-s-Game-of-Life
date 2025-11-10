@@ -126,7 +126,7 @@ public class GameScene {
 
         saveBtn.setOnAction(_ -> {
             try {
-                SaveManager.saveMatrix(cellMatrix, "save.dat");
+                SaveManager.saveMatrix(cellMatrix, stage);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }

@@ -1,13 +1,16 @@
 package game.cellConfigurations;
 
 import game.scenes.gameScene.Cell;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 import java.io.*;
 
 
 public class SaveManager {
-    public static void saveMatrix(Cell[][] matrix, String filename) throws IOException {
-        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(filename))) {
+    public static void saveMatrix(Cell[][] matrix, Stage stage) throws IOException {
+        var file = saveFile(stage);
+        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file))) {
             out.writeObject(matrix);
             System.out.println("File saved correctly.");
         }
@@ -16,8 +19,10 @@ public class SaveManager {
             // e.printStackTrace();
         }
     }
-    public static Cell[][] loadMatrix(String filename) throws IOException, ClassNotFoundException {
-        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(filename))) {
+    public static Cell[][] loadMatrix(Stage stage) throws IOException, ClassNotFoundException {
+        var file = loadFile(stage);
+
+        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(file))) {
             System.out.println("File loaded correctly.");
             return (Cell[][]) in.readObject();
 
@@ -27,5 +32,41 @@ public class SaveManager {
             // e.printStackTrace();
             return null;
         }
+    }
+
+    public static File loadFile(Stage stage){
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Select a File");
+        fileChooser.setInitialDirectory(new File(System.getProperty("user.dir")));
+
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Initial Positions", "*.dat")
+        );
+        File selectedFile = fileChooser.showOpenDialog(stage); // primaryStage is the main Stage of your application
+        if (selectedFile != null) {
+            // Process the selected file
+            System.out.println("Selected file: " + selectedFile.getAbsolutePath());
+        }
+        return selectedFile;
+    }
+
+    public static File saveFile(Stage stage){
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Save Initial Position");
+
+        // Carpeta inicial (opcional)
+        fileChooser.setInitialDirectory(new File(System.getProperty("user.dir")));
+
+        // Nombre sugerido
+        fileChooser.setInitialFileName("initial_state.dat");
+
+        // Filtros de extensión
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Archivos binarios (*.dat)", "*.dat"),
+                new FileChooser.ExtensionFilter("Todos los archivos", "*.*")
+        );
+
+        // Mostrar el diálogo
+        return fileChooser.showSaveDialog(stage);
     }
 }
