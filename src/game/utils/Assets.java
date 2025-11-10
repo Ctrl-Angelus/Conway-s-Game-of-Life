@@ -30,4 +30,8 @@ public class Assets {
     public static final Image notFoundImage = new Image(
             Objects.requireNonNull(Assets.class.getResourceAsStream("/game/resources/sprites/messages/message-not-found.png"))
     );
+
+    public static final Image successImage = new Image(
+            Objects.requireNonNull(Assets.class.getResourceAsStream("/game/resources/sprites/messages/message-success.png"))
+    );
 }

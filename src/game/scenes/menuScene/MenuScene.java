@@ -121,7 +121,7 @@ public class MenuScene {
                 } else {
                     size = Matrix.length;
                     message = String.format("The %d x %d position has been correctly loaded.", size, size);
-                    img = null;
+                    img = successImage;
                 }
 
                 Scene gameScene = new GameScene().getGameScene(
