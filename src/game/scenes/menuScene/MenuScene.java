@@ -69,12 +69,20 @@ public class MenuScene {
         fpsInputLabel.setFont(customFont);
         fpsInputLabel.getStyleClass().add("label-style");
 
-        Label simulationSizeInputLabel = new Label("Grid Size:");
+        Label simulationSizeInputLabel = new Label("Simulation's Grid Size:");
         simulationSizeInputLabel.setLabelFor(simulationSizeInput);
         simulationSizeInputLabel.setFont(customFont);
         simulationSizeInputLabel.getStyleClass().add("label-style");
 
-        HBox inputContainer = new HBox(20, fpsInputLabel, fpsInput, simulationSizeInputLabel, simulationSizeInput);
+        VBox labelContainer = new VBox(50, fpsInputLabel, simulationSizeInputLabel);
+        labelContainer.setAlignment(Pos.CENTER_LEFT);
+        labelContainer.getStyleClass().add("vbox");
+
+        VBox spinnerContainer = new VBox(20, fpsInput, simulationSizeInput);
+        spinnerContainer.setAlignment(Pos.CENTER_RIGHT);
+        spinnerContainer.getStyleClass().add("vbox");
+
+        HBox inputContainer = new HBox(20, labelContainer, spinnerContainer);
         inputContainer.setAlignment(Pos.CENTER);
 
         VBox menuRoot = new VBox(50, canvas, buttonContainer, inputContainer);
