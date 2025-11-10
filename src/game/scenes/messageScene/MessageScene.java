@@ -1,20 +1,36 @@
 package game.scenes.messageScene;
 
-
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import static game.utils.AppParameters.appInitialWidth;
-import static game.utils.Assets.StyleSheet;
-import static game.utils.Assets.customFont;
+import static game.utils.Assets.*;
 
 public class MessageScene {
-    public Scene getScene(Stage stage, Scene alternativeScene, String message, String btnText){
+    public Scene getScene(Stage stage, Scene alternativeScene, String message, String btnText, Image img){
+
+        Canvas canvas = new Canvas();
+        GraphicsContext gc = canvas.getGraphicsContext2D();
+        gc.setImageSmoothing(false);
+
+        if (img != null){
+            canvas.setWidth(appInitialWidth);
+            canvas.setHeight(img.getHeight());
+            gc.drawImage(
+                    img,
+                    (canvas.getWidth() - img.getWidth()) / 2,
+                    0,
+                    img.getWidth(),
+                    img.getHeight());
+        }
+
 
         Label sceneMessage = new Label(message);
         sceneMessage.setFont(customFont);
@@ -24,7 +40,7 @@ public class MessageScene {
         sceneButton.setFont(customFont);
         sceneButton.getStyleClass().add("btn");
 
-        VBox componentContainer = new VBox(50, sceneMessage, sceneButton);
+        VBox componentContainer = new VBox(50, canvas, sceneMessage, sceneButton);
         componentContainer.setAlignment(Pos.CENTER);
         componentContainer.getStyleClass().add("vbox");
 

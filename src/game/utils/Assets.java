@@ -26,4 +26,8 @@ public class Assets {
     public static final Image bannerImage = new Image(
             Objects.requireNonNull(Assets.class.getResourceAsStream("/game/resources/sprites/banner.png"))
     );
+
+    public static final Image notFoundImage = new Image(
+            Objects.requireNonNull(Assets.class.getResourceAsStream("/game/resources/sprites/messages/message-not-found.png"))
+    );
 }

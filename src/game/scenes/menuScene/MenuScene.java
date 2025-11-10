@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -102,14 +103,17 @@ public class MenuScene {
                 int size;
                 String message;
                 String btnLabel = "Start";
+                Image img;
 
                 if(Matrix == null){
                     size = simulationSizeInput.getValue();
                     message = "The position you're trying to access is either corrupted or hasn't been created yet. " +
                             "You can start the simulation with a randomized position instead.";
+                    img = notFoundImage;
                 } else {
                     size = Matrix.length;
                     message = String.format("The %d x %d position has been correctly loaded.", size, size);
+                    img = null;
                 }
 
                 Scene gameScene = new GameScene().getGameScene(
@@ -124,7 +128,8 @@ public class MenuScene {
                         stage,
                         gameScene,
                         message,
-                        btnLabel);
+                        btnLabel,
+                        img);
                 stage.setScene(messageScene);
 
 
