@@ -39,7 +39,7 @@ public class GameScene {
     }
 
     public Scene getGameScene(Stage stage, Scene alternativeScene, double FPS, int simulationSize, Cell[][] firstGeneration){
-        setSimulationParameters(simulationSize + 2);
+        setSimulationParameters(simulationSize);
 
         Canvas canvas = new Canvas(realWidth, realWidth); // Lienzo (mejor optimización para dibujar muchos trazos)
         GraphicsContext gc = canvas.getGraphicsContext2D();
