@@ -13,7 +13,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -23,6 +22,7 @@ import java.io.IOException;
 import static game.utils.AppParameters.appInitialHeight;
 import static game.utils.AppParameters.appInitialWidth;
 import static game.utils.Assets.*;
+import static game.utils.Components.getView;
 
 public class MenuScene {
     public Scene getMenuScene(Stage stage){
@@ -37,17 +37,17 @@ public class MenuScene {
                 bannerImage.getWidth(),
                 bannerImage.getHeight());
 
-        Button playButton = new Button("Start");
-        playButton.setFont(customFont);
-        playButton.getStyleClass().add("btn");
+        Button playButton = new Button();
+        playButton.setGraphic(getView(btnStartImage, 140, true));
+        playButton.getStyleClass().add("btn-sprite");
 
-        Button loadButton = new Button("Load");
-        loadButton.setFont(customFont);
-        loadButton.getStyleClass().add("btn");
+        Button loadButton = new Button();
+        loadButton.setGraphic(getView(btnLoadImage, 140, true));
+        loadButton.getStyleClass().add("btn-sprite");
 
-        Button editorButton = new Button("Editor");
-        editorButton.setFont(customFont);
-        editorButton.getStyleClass().add("btn");
+        Button editorButton = new Button();
+        editorButton.setGraphic(getView(btnEditorImage, 140, true));
+        editorButton.getStyleClass().add("btn-sprite");
 
         HBox buttonContainer = new HBox(20, playButton, loadButton, editorButton);
         buttonContainer.setAlignment(Pos.CENTER);
@@ -115,7 +115,6 @@ public class MenuScene {
 
                 int size;
                 String message;
-                String btnLabel = "Start";
                 Image img;
 
                 if(Matrix == null){
@@ -131,7 +130,7 @@ public class MenuScene {
 
                 Scene gameScene = new GameScene().getGameScene(stage, menuScene, (double) fpsInput.getValue(), size, Matrix);
 
-                Scene messageScene = new MessageScene().getScene(stage, gameScene, menuScene, message, btnLabel, img);
+                Scene messageScene = new MessageScene().getScene(stage, gameScene, menuScene, message, img);
                 stage.setScene(messageScene);
 
 

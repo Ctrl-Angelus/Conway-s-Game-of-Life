@@ -2,6 +2,7 @@ package game.scenes.gameScene;
 
 import game.cellConfigurations.SaveManager;
 import game.utils.Cell;
+import game.utils.Components;
 import javafx.animation.AnimationTimer;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -15,11 +16,9 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 import static game.utils.AppParameters.*;
-import static game.utils.Assets.StyleSheet;
+import static game.utils.Assets.*;
 import static game.utils.ColorPalette.*;
 import static game.scenes.gameScene.GenerationalLogic.*;
-
-import static game.utils.Assets.customFont;
 
 public class GameScene {
 
@@ -50,39 +49,39 @@ public class GameScene {
         drawGeneration(gc, cellMatrix);
         // Generación aleatoria de células para la posición inicial
 
-        Text generationCounter = new Text("Generations: 0");
+        Text generationCounter = new Text("Gen: 0");
         generationCounter.setFont(customFont);
         generationCounter.getStyleClass().add("text-style");
         generationCounter.setFill(textColor);
-        generationCounter.setLayoutX(10);
-        generationCounter.setLayoutY(realWidth + 50);
+        generationCounter.setLayoutX(20);
+        generationCounter.setLayoutY(realWidth + 60);
 
-        Button pauseBtn = new Button("Play");
-        pauseBtn.getStyleClass().add("btn");
-        pauseBtn.setFont(customFont);
-        pauseBtn.setLayoutX(realWidth - 160);
-        pauseBtn.setLayoutY(realWidth + 7);
+        Button playBtn = new Button();
+        playBtn.setGraphic(Components.getView(btnPlayVariantImage, 140, true));
+        playBtn.getStyleClass().add("btn-sprite");
+        playBtn.setLayoutX(realWidth - 160);
+        playBtn.setLayoutY(realWidth + 7);
 
-        Button nextStepBtn = new Button("Step");
-        nextStepBtn.getStyleClass().add("btn");
-        nextStepBtn.setFont(customFont);
+        Button nextStepBtn = new Button();
+        nextStepBtn.setGraphic(Components.getView(btnStepImage, 140, true));
+        nextStepBtn.getStyleClass().add("btn-sprite");
         nextStepBtn.setLayoutX(realWidth - 320);
         nextStepBtn.setLayoutY(realWidth + 7);
 
-        Button saveBtn = new Button("Save");
-        saveBtn.getStyleClass().add("btn");
-        saveBtn.setFont(customFont);
+        Button saveBtn = new Button();
+        saveBtn.setGraphic(Components.getView(btnSaveImage, 140, true));
+        saveBtn.getStyleClass().add("btn-sprite");
         saveBtn.setLayoutX(realWidth - 480);
         saveBtn.setLayoutY(realWidth + 7);
 
-        Button menuBtn = new Button("Menu");
-        menuBtn.getStyleClass().add("btn");
-        menuBtn.setFont(customFont);
+        Button menuBtn = new Button();
+        menuBtn.setGraphic(Components.getView(btnMenuImage, 140, true));
+        menuBtn.getStyleClass().add("btn-sprite");
         menuBtn.setLayoutX(realWidth - 640);
         menuBtn.setLayoutY(realWidth + 7);
 
         Pane pane = new Pane();
-        pane.getChildren().addAll(generationCounter, pauseBtn, nextStepBtn, saveBtn, menuBtn);
+        pane.getChildren().addAll(generationCounter, playBtn, nextStepBtn, saveBtn, menuBtn);
 
         Group rootGroup = new Group(canvas, pane); // genera un grupo que va a almacenar el canvas y el texto
 
@@ -100,15 +99,15 @@ public class GameScene {
             }
         };
 
-        pauseBtn.setOnAction(_ -> {
+        playBtn.setOnAction(_ -> {
             if(gameLoopActive){
                 gameLoopActive = false;
                 timer.stop();
-                pauseBtn.setText("Play");
+                playBtn.setGraphic(Components.getView(btnPlayVariantImage, 140, true));
             } else {
                 gameLoopActive = true;
                 timer.start();
-                pauseBtn.setText("Pause");
+                playBtn.setGraphic(Components.getView(btnPauseImage, 140, true));
             }
         });
 
@@ -116,7 +115,7 @@ public class GameScene {
             if(gameLoopActive){
                 gameLoopActive = false;
                 timer.stop();
-                pauseBtn.setText("Play");
+                playBtn.setGraphic(Components.getView(btnPlayVariantImage, 140, true));
             }
             update(gc, generationCounter);
         });

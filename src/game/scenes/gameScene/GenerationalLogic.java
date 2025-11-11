@@ -59,7 +59,7 @@ public class GenerationalLogic extends GameScene{
         cellMatrix = copyMatrix.clone(); // Clona la copia de la matriz para usarla como referencia en la nueva generación
         copyMatrix = new Cell[SimulationSize][SimulationSize]; // Crea una matriz vacía que se usará para calcular los valores de la siguiente generación
         generations++;
-        generationCounter.setText("Generations: " + generations); // Actualiza el contador de generaciones
+        generationCounter.setText("Gen: " + generations); // Actualiza el contador de generaciones
     }
 
     private static void setNextGenerationStates(){

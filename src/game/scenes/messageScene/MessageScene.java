@@ -1,5 +1,6 @@
 package game.scenes.messageScene;
 
+import game.utils.Components;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
@@ -15,8 +16,9 @@ import static game.utils.AppParameters.appInitialHeight;
 import static game.utils.AppParameters.appInitialWidth;
 import static game.utils.Assets.*;
 
+
 public class MessageScene {
-    public Scene getScene(Stage stage, Scene alternativeScene, Scene parentScene, String message, String btnText, Image img){
+    public Scene getScene(Stage stage, Scene alternativeScene, Scene parentScene, String message, Image img){
 
         Canvas canvas = new Canvas();
         GraphicsContext gc = canvas.getGraphicsContext2D();
@@ -38,13 +40,13 @@ public class MessageScene {
         sceneMessage.setFont(customFont);
         sceneMessage.getStyleClass().add("message");
 
-        Button sceneButton = new Button(btnText);
-        sceneButton.setFont(customFont);
-        sceneButton.getStyleClass().add("btn");
+        Button sceneButton = new Button();
+        sceneButton.setGraphic(Components.getView(btnContinueImage, 150, true));
+        sceneButton.getStyleClass().add("btn-sprite");
 
-        Button returnButton = new Button("Return");
-        returnButton.setFont(customFont);
-        returnButton.getStyleClass().add("btn");
+        Button returnButton = new Button();
+        returnButton.setGraphic(Components.getView(btnReturnImage, 150, true));
+        returnButton.getStyleClass().add("btn-sprite");
 
         HBox buttonContainer = new HBox(50, returnButton, sceneButton);
         buttonContainer.setAlignment(Pos.CENTER);

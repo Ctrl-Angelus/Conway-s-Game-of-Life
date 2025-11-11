@@ -3,7 +3,7 @@ package game.utils;
 
 public class AppParameters {
     public static final int appInitialWidth = 900;
-    public static final int appInitialHeight = 980;
+    public static final int appInitialHeight = 990;
 
     public static Cell[][] cellMatrix;
     public static Cell[][] copyMatrix;

@@ -7,8 +7,8 @@
 }
 
 .spinner {
-    -fx-border-color: #67faff;
-    -fx-border-width: 2px;
+    -fx-border-color: black;
+    -fx-border-width: 3px;
 }
 
 .spinner .increment-arrow-button,
@@ -34,7 +34,7 @@
 
 .spinner .text-field {
     -fx-background-color: #fff; 
-    -fx-text-fill: #11676a;
+    -fx-text-fill: black;
     -fx-background-insets: 0;         /* quita las capas que crean la sombra */
     -fx-background-radius: 0;         /* bordes rectos */
     -fx-effect: none;   
@@ -45,8 +45,7 @@
     -fx-background-color: #bbfdff;
     -fx-text-fill: #11676a;
     -fx-min-width: 150px;
-    -fx-transition: any;
-    -fx-transition-duration: 0.5s;
+    transition: -fx-background-color 0.3s linear;
     -fx-border-width: 2px;
     -fx-border-color: #bbfdff;
 }
@@ -54,6 +53,19 @@
     -fx-background-color: #23bfc4;
     -fx-text-fill: #fff;
     -fx-border-color: #cbdbfc;
+}
+.btn-sprite {
+    -fx-cursor: hand;
+    -fx-border: none;
+    -fx-background-color: none;
+
+}
+.btn-sprite .image-view{
+    transition: 0.2s linear;
+}
+.btn-sprite:hover .image-view{
+    -fx-scale-x: 0.9;
+    -fx-scale-y: 0.9;
 }
 .vbox {
     -fx-background-color: #126669;

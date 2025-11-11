@@ -4,11 +4,14 @@ import game.cellConfigurations.SaveManager;
 import game.scenes.gameScene.GameScene;
 import game.scenes.gameScene.GenerationalLogic;
 import game.utils.Cell;
+import game.utils.Components;
+import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -29,31 +32,28 @@ public class EditorScene extends GameScene {
 
         GenerationalLogic.drawGeneration(gc, editorMatrix);
 
-        Button playBtn = new Button("Play");
-        playBtn.getStyleClass().add("btn");
-        playBtn.setFont(customFont);
-        playBtn.setLayoutX(realWidth - 160);
-        playBtn.setLayoutY(realWidth + 7);
+        Button playBtn = new Button();
+        playBtn.setGraphic(Components.getView(btnPlayImage, 140, true));
+        playBtn.getStyleClass().add("btn-sprite");
 
-        Button saveBtn = new Button("Save");
-        saveBtn.getStyleClass().add("btn");
-        saveBtn.setFont(customFont);
-        saveBtn.setLayoutX(realWidth - 320);
-        saveBtn.setLayoutY(realWidth + 7);
+        Button saveBtn = new Button();
+        saveBtn.setGraphic(Components.getView(btnSaveImage, 140, true));
+        saveBtn.getStyleClass().add("btn-sprite");
 
-        Button loadBtn = new Button("Load");
-        loadBtn.getStyleClass().add("btn");
-        loadBtn.setFont(customFont);
-        loadBtn.setLayoutX(realWidth - 480);
-        loadBtn.setLayoutY(realWidth + 7);
+        Button loadBtn = new Button();
+        loadBtn.setGraphic(Components.getView(btnLoadImage, 140, true));
+        loadBtn.getStyleClass().add("btn-sprite");
 
-        Button menuBtn = new Button("Menu");
-        menuBtn.getStyleClass().add("btn");
-        menuBtn.setFont(customFont);
-        menuBtn.setLayoutX(realWidth - 640);
-        menuBtn.setLayoutY(realWidth + 7);
+        Button menuBtn = new Button();
+        menuBtn.setGraphic(Components.getView(btnMenuImage, 140, true));
+        menuBtn.getStyleClass().add("btn-sprite");
 
-        Pane buttonContainer = new Pane(playBtn, saveBtn, menuBtn, loadBtn);
+        HBox buttonContainer = new HBox(30, menuBtn, loadBtn, saveBtn, playBtn);
+        buttonContainer.setPrefWidth(realWidth);
+        buttonContainer.setPrefHeight(appInitialHeight - realWidth);
+        buttonContainer.setAlignment(Pos.CENTER);
+        buttonContainer.setLayoutY(realWidth);
+        buttonContainer.setLayoutX(0);
 
         Group componentContainer = new Group(buttonContainer, canvas);
 
