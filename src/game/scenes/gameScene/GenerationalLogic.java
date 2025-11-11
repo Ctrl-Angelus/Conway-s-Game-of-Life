@@ -1,5 +1,6 @@
 package game.scenes.gameScene;
 
+import game.utils.Cell;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
@@ -36,7 +37,7 @@ public class GenerationalLogic extends GameScene{
         return Matrix;
     }
 
-    private static boolean checkForBorders(int i, int j){
+    public static boolean checkForBorders(int i, int j){
         // Verifica si la célula está en un lateral de la matriz
         return (i == 0 || i == SimulationSize -1) || (j == 0 || j == SimulationSize -1);
     }

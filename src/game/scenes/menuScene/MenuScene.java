@@ -1,6 +1,7 @@
 package game.scenes.menuScene;
 
 import game.cellConfigurations.SaveManager;
+import game.scenes.editorEscene.EditorScene;
 import game.scenes.gameScene.GameScene;
 import game.scenes.messageScene.MessageScene;
 import javafx.geometry.Pos;
@@ -12,6 +13,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -30,7 +32,7 @@ public class MenuScene {
 
         gc.drawImage(
                 bannerImage,
-                (canvas.getWidth() - bannerImage.getWidth()) / 2,
+                (canvas.getWidth() - bannerImage.getWidth()) / 2 + 10,
                 (canvas.getHeight() - bannerImage.getHeight()) / 2,
                 bannerImage.getWidth(),
                 bannerImage.getHeight());
@@ -43,7 +45,11 @@ public class MenuScene {
         loadButton.setFont(customFont);
         loadButton.getStyleClass().add("btn");
 
-        HBox buttonContainer = new HBox(20, playButton, loadButton);
+        Button editorButton = new Button("Editor");
+        editorButton.setFont(customFont);
+        editorButton.getStyleClass().add("btn");
+
+        HBox buttonContainer = new HBox(20, playButton, loadButton, editorButton);
         buttonContainer.setAlignment(Pos.CENTER);
 
         Spinner<Integer> fpsInput = new Spinner<>();
@@ -100,7 +106,6 @@ public class MenuScene {
                     (double) fpsInput.getValue(),
                     simulationSizeInput.getValue(),
                     null);
-            gameScene.getStylesheets().add(StyleSheet);
             stage.setScene(gameScene); // Cambia la escena actual por gameScene
         });
 
@@ -124,27 +129,20 @@ public class MenuScene {
                     img = successImage;
                 }
 
-                Scene gameScene = new GameScene().getGameScene(
-                        stage,
-                        menuScene,
-                        (double) fpsInput.getValue(),
-                        size,
-                        Matrix);
-                gameScene.getStylesheets().add(StyleSheet);
+                Scene gameScene = new GameScene().getGameScene(stage, menuScene, (double) fpsInput.getValue(), size, Matrix);
 
-                Scene messageScene = new MessageScene().getScene(
-                        stage,
-                        gameScene,
-                        menuScene,
-                        message,
-                        btnLabel,
-                        img);
+                Scene messageScene = new MessageScene().getScene(stage, gameScene, menuScene, message, btnLabel, img);
                 stage.setScene(messageScene);
 
 
             } catch (IOException | ClassNotFoundException e) {
                 throw new RuntimeException(e);
             }
+        });
+
+        editorButton.setOnAction(_ -> {
+            Scene editorScene = new EditorScene().getScene(stage, simulationSizeInput.getValue(), fpsInput.getValue(), menuScene);
+            stage.setScene(editorScene);
         });
 
         return menuScene;

@@ -1,6 +1,7 @@
 package game.scenes.gameScene;
 
 import game.cellConfigurations.SaveManager;
+import game.utils.Cell;
 import javafx.animation.AnimationTimer;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -14,6 +15,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 import static game.utils.AppParameters.*;
+import static game.utils.Assets.StyleSheet;
 import static game.utils.ColorPalette.*;
 import static game.scenes.gameScene.GenerationalLogic.*;
 
@@ -131,7 +133,9 @@ public class GameScene {
                 throw new RuntimeException(e);
             }
         });
+        Scene scene = new Scene(rootGroup, realWidth, appInitialHeight, backgroundColor);
+        scene.getStylesheets().add(StyleSheet);
 
-        return new Scene(rootGroup, realWidth, appInitialHeight, backgroundColor);
+        return scene;
     }
 }

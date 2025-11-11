@@ -1,6 +1,6 @@
 package game.cellConfigurations;
 
-import game.scenes.gameScene.Cell;
+import game.utils.Cell;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -27,9 +27,9 @@ public class SaveManager {
             return (Cell[][]) in.readObject();
 
         }
-        catch (IOException | ClassNotFoundException e) {
+        catch (IOException | ClassNotFoundException  e) {
             System.out.println("That initial position doesn't exists or it's corrupted.");
-            // e.printStackTrace();
+            e.printStackTrace();
             return null;
         }
     }
@@ -42,7 +42,7 @@ public class SaveManager {
         fileChooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("Initial Positions", "*.dat")
         );
-        File selectedFile = fileChooser.showOpenDialog(stage); // primaryStage is the main Stage of your application
+        File selectedFile = fileChooser.showOpenDialog(stage);
         if (selectedFile != null) {
             // Process the selected file
             System.out.println("Selected file: " + selectedFile.getAbsolutePath());
@@ -62,8 +62,7 @@ public class SaveManager {
 
         // Filtros de extensión
         fileChooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("Archivos binarios (*.dat)", "*.dat"),
-                new FileChooser.ExtensionFilter("Todos los archivos", "*.*")
+                new FileChooser.ExtensionFilter("Archivos binarios (*.dat)", "*.dat")
         );
 
         // Mostrar el diálogo

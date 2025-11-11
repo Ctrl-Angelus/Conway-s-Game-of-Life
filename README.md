@@ -70,7 +70,7 @@ or the simulation border, where some of them will become still lives or oscillat
 - [X]  Allow users to save and open custom initial positions.
 - [ ]  Add sound effects.
 - [ ]  Add the basic patterns and information scene.
-- [ ]  Add the initial position editor.
+- [X]  Add the initial position editor.
 
 <hr>
 

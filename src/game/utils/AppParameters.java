@@ -1,7 +1,5 @@
 package game.utils;
 
-import game.scenes.gameScene.Cell;
-
 
 public class AppParameters {
     public static final int appInitialWidth = 900;
