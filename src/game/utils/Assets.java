@@ -3,6 +3,8 @@ package game.utils;
 import javafx.scene.image.Image;
 import javafx.scene.text.Font;
 import java.util.Objects;
+
+import static game.utils.AppParameters.appInitialHeight;
 import static game.utils.Components.getImage;
 
 public class Assets {
@@ -13,7 +15,8 @@ public class Assets {
     ).toExternalForm();
 
     // Fuente personalizada "Medodica"
-    private static final int defaultFontSize = 45;
+    private static final double fontRelativeSize = appInitialHeight / 1080;
+    private static final double defaultFontSize = 45 * fontRelativeSize;
     public static Font customFont = Font.loadFont(
             Assets.class.getResourceAsStream("/game/resources/fonts/Medodica.otf"), defaultFontSize
     );

@@ -1,5 +1,7 @@
 .text-style {
-    -fx-min-height: 50px; 
+    -fx-text-fill: #fff;
+    -fx-fill: #fff;
+    -fx-min-height: 50px;
     -fx-text-alignment: center;
 }
 .label-style {
@@ -50,6 +52,9 @@
 }
 .vbox {
     -fx-padding: 100 20 00 00;
+    -fx-background-color: transparent;
+}
+.container {
     -fx-background-color: transparent;
 }
 .gameScene-pane {

@@ -10,7 +10,7 @@ import java.util.Random;
 import static game.utils.AppParameters.*;
 
 public class GenerationalLogic extends GameScene{
-    public static Cell[][] randomFirstGenerationCells(GraphicsContext gc){
+    public static Cell[][] randomFirstGenerationCells(){
         var Matrix = new Cell[SimulationSize][SimulationSize];
         Random random = new Random();
         double coordinateX;

@@ -13,7 +13,6 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
-import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -21,56 +20,38 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-import static game.utils.AppParameters.appInitialHeight;
-import static game.utils.AppParameters.appInitialWidth;
+import static game.utils.AppParameters.*;
 import static game.utils.Assets.*;
-import static game.utils.Components.getView;
+import static game.utils.Components.*;
 
 public class MenuScene {
     public Scene getMenuScene(Stage stage){
-        Canvas canvas = new Canvas(appInitialWidth, (double) appInitialHeight /3);
+        Canvas canvas = new Canvas(appInitialWidth, appInitialHeight /3);
         GraphicsContext gc = canvas.getGraphicsContext2D();
         gc.setImageSmoothing(false);
 
-        gc.drawImage(
-                bannerImage,
-                (canvas.getWidth() - bannerImage.getWidth()) / 2 + 10,
-                (canvas.getHeight() - bannerImage.getHeight()) / 2,
-                bannerImage.getWidth(),
-                bannerImage.getHeight());
+        drawImage(canvas, gc, bannerImage);
 
         Button playButton = new Button();
-        playButton.setGraphic(getView(btnStartImage, 140, true));
+        playButton.setGraphic(getView(btnStartImage, buttonSize, true));
         playButton.getStyleClass().add("btn-sprite");
 
         Button loadButton = new Button();
-        loadButton.setGraphic(getView(btnLoadImage, 140, true));
+        loadButton.setGraphic(getView(btnLoadImage, buttonSize, true));
         loadButton.getStyleClass().add("btn-sprite");
 
         Button editorButton = new Button();
-        editorButton.setGraphic(getView(btnEditorImage, 140, true));
+        editorButton.setGraphic(getView(btnEditorImage, buttonSize, true));
         editorButton.getStyleClass().add("btn-sprite");
 
         HBox buttonContainer = new HBox(20, playButton, loadButton, editorButton);
         buttonContainer.setAlignment(Pos.CENTER);
 
         Spinner<Integer> fpsInput = new Spinner<>();
-        fpsInput.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(10, 60, 10)); // min, max, initial
-        fpsInput.setEditable(true); // permitir escribir directamente
-        fpsInput.setPrefWidth(150);
-        fpsInput.getEditor().setFont(customFont);
-        SpinnerValueFactory.IntegerSpinnerValueFactory fpsInputValueFactory =
-                (SpinnerValueFactory.IntegerSpinnerValueFactory) fpsInput.getValueFactory();
-        fpsInputValueFactory.setAmountToStepBy(5);
+        setIntegerSpinnerConfig(fpsInput, customFont, buttonSize, 10, 60, 10, 5);
 
         Spinner<Integer> simulationSizeInput = new Spinner<>();
-        simulationSizeInput.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(10, 100, 80)); // min, max, initial
-        simulationSizeInput.setEditable(true); // permitir escribir directamente
-        simulationSizeInput.setPrefWidth(150);
-        simulationSizeInput.getEditor().setFont(customFont);
-        SpinnerValueFactory.IntegerSpinnerValueFactory simulationSizeInputValueFactory =
-                (SpinnerValueFactory.IntegerSpinnerValueFactory) simulationSizeInput.getValueFactory();
-        simulationSizeInputValueFactory.setAmountToStepBy(5);
+        setIntegerSpinnerConfig(simulationSizeInput, customFont, buttonSize, 10, 100, 80, 5);
 
         Label fpsInputLabel = new Label("Simulation's FPS:");
         fpsInputLabel.setLabelFor(fpsInputLabel);
@@ -82,11 +63,11 @@ public class MenuScene {
         simulationSizeInputLabel.setFont(customFont);
         simulationSizeInputLabel.getStyleClass().add("label-style");
 
-        VBox labelContainer = new VBox(50, fpsInputLabel, simulationSizeInputLabel);
+        VBox labelContainer = new VBox(30, fpsInputLabel, simulationSizeInputLabel);
         labelContainer.setAlignment(Pos.CENTER_LEFT);
         labelContainer.getStyleClass().add("vbox");
 
-        VBox spinnerContainer = new VBox(20, fpsInput, simulationSizeInput);
+        VBox spinnerContainer = new VBox(10, fpsInput, simulationSizeInput);
         spinnerContainer.setAlignment(Pos.CENTER_RIGHT);
         spinnerContainer.getStyleClass().add("vbox");
 
@@ -94,13 +75,12 @@ public class MenuScene {
         inputContainer.setAlignment(Pos.CENTER);
 
         Button informationButton = new Button();
-        informationButton.setGraphic(getView(btnInformationImage, 50, true));
+        informationButton.setGraphic(getView(btnInformationImage, buttonSize/3, true));
         informationButton.getStyleClass().add("btn-sprite");
         informationButton.setLayoutX(20);
         informationButton.setLayoutY(20);
 
-        VBox menuRoot = new VBox(50, canvas, buttonContainer, inputContainer);
-        menuRoot.setAlignment(Pos.TOP_CENTER);
+        VBox menuRoot = new VBox(10, canvas, buttonContainer, inputContainer);
         menuRoot.getStyleClass().add("vbox");
 
 

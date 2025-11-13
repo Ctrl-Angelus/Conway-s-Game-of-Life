@@ -12,9 +12,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import static game.utils.AppParameters.*;
 import static game.utils.ColorPalette.backgroundColor;
-import static game.utils.AppParameters.appInitialHeight;
-import static game.utils.AppParameters.appInitialWidth;
 import static game.utils.Assets.*;
 
 
@@ -27,13 +26,8 @@ public class MessageScene {
 
         if (img != null){
             canvas.setWidth(appInitialWidth);
-            canvas.setHeight(img.getHeight());
-            gc.drawImage(
-                    img,
-                    (canvas.getWidth() - img.getWidth()) / 2,
-                    0,
-                    img.getWidth(),
-                    img.getHeight());
+            canvas.setHeight(appInitialHeight/3);
+            Components.drawImage(canvas, gc, img);
         }
 
 
@@ -42,11 +36,11 @@ public class MessageScene {
         sceneMessage.getStyleClass().add("message");
 
         Button sceneButton = new Button();
-        sceneButton.setGraphic(Components.getView(btnContinueImage, 150, true));
+        sceneButton.setGraphic(Components.getView(btnContinueImage, buttonSize, true));
         sceneButton.getStyleClass().add("btn-sprite");
 
         Button returnButton = new Button();
-        returnButton.setGraphic(Components.getView(btnReturnImage, 150, true));
+        returnButton.setGraphic(Components.getView(btnReturnImage, buttonSize, true));
         returnButton.getStyleClass().add("btn-sprite");
 
         HBox buttonContainer = new HBox(50, returnButton, sceneButton);

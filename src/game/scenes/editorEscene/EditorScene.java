@@ -12,12 +12,12 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
 import static game.utils.AppParameters.appInitialHeight;
+import static game.utils.AppParameters.buttonSize;
 import static game.utils.Assets.*;
 import static game.utils.ColorPalette.backgroundColor;
 
@@ -33,19 +33,19 @@ public class EditorScene extends GameScene {
         GenerationalLogic.drawGeneration(gc, editorMatrix);
 
         Button playBtn = new Button();
-        playBtn.setGraphic(Components.getView(btnPlayImage, 140, true));
+        playBtn.setGraphic(Components.getView(btnPlayImage, buttonSize, true));
         playBtn.getStyleClass().add("btn-sprite");
 
         Button saveBtn = new Button();
-        saveBtn.setGraphic(Components.getView(btnSaveImage, 140, true));
+        saveBtn.setGraphic(Components.getView(btnSaveImage, buttonSize, true));
         saveBtn.getStyleClass().add("btn-sprite");
 
         Button loadBtn = new Button();
-        loadBtn.setGraphic(Components.getView(btnLoadImage, 140, true));
+        loadBtn.setGraphic(Components.getView(btnLoadImage, buttonSize, true));
         loadBtn.getStyleClass().add("btn-sprite");
 
         Button menuBtn = new Button();
-        menuBtn.setGraphic(Components.getView(btnMenuImage, 140, true));
+        menuBtn.setGraphic(Components.getView(btnMenuImage, buttonSize, true));
         menuBtn.getStyleClass().add("btn-sprite");
 
         HBox buttonContainer = new HBox(30, menuBtn, loadBtn, saveBtn, playBtn);
