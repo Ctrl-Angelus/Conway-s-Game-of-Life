@@ -81,7 +81,7 @@ or the simulation border, where some of them will become still lives or oscillat
 ### **JVM and project's configurations needed (Intellij IDEA):** 
 
 ``` java
---module-path "$JAVAFX_HOME$\lib" --add-modules javafx.controls,javafx.fxml --enable-native-access=javafx.graphics
+--module-path "$JAVAFX_HOME$\lib" --add-modules javafx.controls --enable-native-access=javafx.graphics
 ```
 
 `$JAVAFX_HOME$`: Environment variable that contains the path to the javafx home directory. 
