@@ -1,0 +1,26 @@
+plugins {
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.1.0'
+}
+
+repositories {
+    mavenCentral()
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(24)
+    }
+    run {
+        jvmArgs = ['--enable-native-access=javafx.graphics']
+    }
+}
+
+javafx {
+    version = "25"
+    modules = [ 'javafx.controls', 'javafx.graphics' ]
+}
+
+application {
+    mainClass = "game.Main"
+}

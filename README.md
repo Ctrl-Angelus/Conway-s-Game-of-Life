@@ -2,9 +2,9 @@
 <hr>
 <div align="center">
     <img 
-    width=855 
+    width=835 
     style="image-rendering: pixelated; image-rendering: crisp-edges;" 
-    src="src/game/resources/sprites/banner.png"
+    src="src/main/resources/game/resources/sprites/banner.png"
     alt = "Game Banner"
     >
 </div>
@@ -45,19 +45,19 @@ or the simulation border, where some of them will become still lives or oscillat
     <img
         width=240
         style="image-rendering: pixelated; image-rendering: crisp-edges; margin: 20px"
-        src="src/game/resources/sprites/patterns/pattern-still.png"
+        src="src/main/resources/game/resources/sprites/patterns/pattern-still.png"
         alt = "Still life"
     >
     <img
         width=280
         style="image-rendering: pixelated; image-rendering: crisp-edges; margin: 20px"
-        src="src/game/resources/sprites/patterns/pattern-oscillators.png"
+        src="src/main/resources/game/resources/sprites/patterns/pattern-oscillators.png"
         alt = "Oscillator life"
     >
     <img
         width=280
         style="image-rendering: pixelated; image-rendering: crisp-edges; margin: 20px"
-        src="src/game/resources/sprites/patterns/pattern-spaceships.png"
+        src="src/main/resources/game/resources/sprites/patterns/pattern-spaceships.png"
         alt = "SpaceShips"
     >
 </div>
@@ -74,22 +74,19 @@ or the simulation border, where some of them will become still lives or oscillat
 <hr>
 
 > [!IMPORTANT]
+> **The project uses JDK 24**
+> **The project uses Gradle v.8.14**
 > **The project uses the JavaFX sdk v25.0.1**
 
 <hr>
 
-### **JVM and project's configurations needed (Intellij IDEA):** 
+### **How to run the project** 
+
+Use the Run task from gradle inside Intellij, or use gradlew (open the terminal inside the project's directory): 
 
 ``` java
---module-path "$JAVAFX_HOME$\lib" --add-modules javafx.controls --enable-native-access=javafx.graphics
+.\gradlew run
 ```
-
-`$JAVAFX_HOME$`: Environment variable that contains the path to the javafx home directory. 
-It has to be added to the IDE environment variables.
-
-``` java
-JAVAFX_HOME=C:\Java\javafx-sdk-25.0.1
-```
-
+The first time, Gradle will need internet connection to download all the dependencies
 
 
